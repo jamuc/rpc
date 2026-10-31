@@ -1,20 +1,18 @@
-#include "buffered_reader.h"
 #include "stack.h"
+#include "parser.h"
 #include <stdio.h>
 
+#define MAXOP 120
+
 int main() {
-  int c = 0;
 
-  pop();
+  char s[MAXOP];
+  int type = 0;
 
-  push(5.0);
-  printf("The value popped from the stack, %g\n", pop());
-
-  c = read();
-  unread(c);
-
-  c = read();
-  printf("You just entered value %c\n", c);
+  while ((type = parse(s)) != EOF) {
+    printf("this is the type %c \n", type);
+    printf("The string %s \n", s);
+  }
 
   return 0;
 }
